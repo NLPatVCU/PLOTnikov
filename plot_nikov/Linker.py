@@ -127,7 +127,7 @@ class LinkFinder:
                 for match in value:
                     if match[0] == forward.name:
                         newNode = Node(match[1], parent=forward, origin=entry)
-                        self.__recursive(newNode, root)
+                        self.__recursive_tree_form(newNode, root)
 
         return True
 
@@ -188,10 +188,12 @@ class LinkFinder:
                                 print(y)
 
                             # Gets the textual name of the entity
-                            starting_tag = re.find("" + x + "\t"+self.startTag+"\s\d+\s\d+\t.+", ann_text)
+                            starting_tag = re.findall("" + x + "\t"+self.startTag+"\s\d+\s\d+\t.+", ann_text)
+                            starting_tag = starting_tag[0]
                             starting_tag = re.sub("" + x + "\t"+self.startTag+"\s\d+\s\d+\t", "", starting_tag)
 
-                            ending_tag = re.find("" + y + "\t"+self.endTag+"\s\d+\s\d+\t.+", ann_text)
+                            ending_tag = re.findall("" + y + "\t"+self.endTag+"\s\d+\s\d+\t.+", ann_text)
+                            ending_tag=ending_tag[0]
                             ending_tag = re.sub("" + y + "\t"+self.endTag+"\s\d+\s\d+\t", "", ending_tag)
 
                             # Checks that the entities contain useful information

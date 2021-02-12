@@ -12,7 +12,7 @@ setup(
     description='A program to find reaction chains from annotated datasets',
     long_description=readme(),
     packages=find_packages(),
-    url='https://github.com/NLPatVCU/ReactionChainLinker',
+    url='https://github.com/NLPatVCU/PLOTnikov',
     author=__authors__,
     author_email='d.y.plotnikov@gmail.com',
     keywords='',
