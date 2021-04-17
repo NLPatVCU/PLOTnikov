@@ -216,7 +216,8 @@ class LinkFinder:
 
                     # Checks if any links were found at all
                     if self.foundLinks:
-                        print(self.foundLinks)
+                        if self.debug:
+                            print(self.foundLinks)
                         end = True
                     else:
                         print("Failed to find a match!")
@@ -246,8 +247,9 @@ class LinkFinder:
                 ref_node = node
 
             if node.depth > 2:
-                print(node)
-                print("is level 3")
+                if self.debug:
+                    print(node)
+                    print("is level 3")
                 ref_node = Node("Success", parent=root_truncated, origin=-1)
 
         self.rootTruncated = root_truncated
@@ -274,7 +276,7 @@ class LinkFinder:
             if '"root"' not in line:
                 new_lines.append(line)
         new_file.writelines(new_lines)
-
+        new_file.close()
         os.system("dot " + file_name + ".new.dot -Nshape=box -GoutputMode=nodesFirst -Grankdir=LR -T svg -O")
 
     def find_by_key(self,key):
